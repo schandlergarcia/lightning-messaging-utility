@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>47.0</apiVersion>
+    <description>A messaging utility for lighting web components.</description>
+    <isExposed>true</isExposed>
+    <masterLabel>LWC Messaging Utility</masterLabel>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage, lightning__HomePage, lightning__RecordPage, lightningCommunity__Default">
+            <property name="messageType" label="Message Type" description="The type of message you would like to display" type="String" datasource="alert,inline,prompt,illustration"/>
+            <property name="showMessage" label="Show Message" description="This determines if the component is shown to the user" type="Boolean"/>
+            <property name="allowClose" label="Allow Close" description="Allow the user to close the message, this does not apply to prompts" type="Boolean"/>
+            <property name="maxWidth" label="Max width (%)" description="This will set the max with of the alert, inline, or illustration component. Please supply a number" type="Integer"/>
+            <property name="messageTitle" label="Message Title" description="The title of the message being displayed" type="String"/>
+            <property name="messageBody" label="Message Body" description="The details of the message being displayed" type="String"/>
+            <property name="messageVariant" label="Message Variant" description="Please see the user guide for the designated variants" type="String"/>
+            <property name="showIcon" label="Show Icon" description="This determines if the icon is shown to the user" type="Boolean"/>
+            <property name="iconName" label="Icon Name" description="Icon names can be found in the Lightning design system, prefix with the category ie. utility:open" type="String"/>
+            <property name="iconSize" label="Icon Size" description="The type of message you would like to display" type="String" datasource="xx-small, x-small, small, medium"/>
+            <property name="iconVariant" label="Icon Variant" description="Please see the user guide for the designated variants" type="String"/>
+            <property name="iconAlternativeText" label="Icon Alternative Text" description="Please supply alternative text for the icon" type="String"/>
+            <property name="illustrationName" label="Illustration Name" description="Please select the Illustration you would like to display" type="String" datasource="camping,desert,empty,fishing,mountain"/>
+            <property name="buttonLabel" label="Button Label" description="Please supply a button label if using a prompt" type="String"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

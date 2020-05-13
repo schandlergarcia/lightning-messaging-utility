@@ -1,0 +1,129 @@
+<!--
+ - Created by stephan.garcia on 2020-05-03.
+ -->
+
+<!-- LWC Messaging Utility -->
+<template>
+    <template if:true={showMessage}>
+        <div class="slds-grid slds-wrap slds-align--absolute-center">
+            <div class="slds-size--1-of-1" style={containerWidth}>
+                <template if:true={isAlert}>
+                    <div class="slds-grid">
+                        <div class="slds-size--1-of-1">
+                            <div class={alertMessageClass} role="alert">
+                                <template if:true={showIcon}>
+                                    <lightning-icon class="slds-p-right--small" icon-name={iconName}
+                                                    variant={iconVariant} size={iconSize}
+                                                    alternative-text={iconAlternativeText}></lightning-icon>
+                                </template>
+                                <h2>
+                                    <template if:true={messageBody}>
+                                        {messageBody}
+                                    </template>
+                                    <template if:false={messageBody}>
+                                        Message body not set
+                                    </template>
+                                </h2>
+                                <template if:true={allowClose}>
+                                    <div class="slds-notify__close slds-p-left--small">
+                                        <button class="slds-button slds-button_icon slds-button_icon-inverse"
+                                                title="Close" onclick={closeMessage}>
+                                            <lightning-icon icon-name="utility:close"
+                                                            alternative-text="close"
+                                                            variant="inverse"
+                                                            size="x-small"></lightning-icon>
+                                            <span class="slds-assistive-text">Close</span>
+                                        </button>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                <template if:true={isIllustration}>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-size--1-of-1">
+                            <c-lwc-messaging-illustration
+                                    illustration-name={illustrationName}></c-lwc-messaging-illustration>
+                        </div>
+                        <div class="slds-size--1-of-1 slds-align--absolute-center slds-p-top--small">
+                            <h3 class="slds-illustration__header slds-text-heading_medium slds-text-align--center">
+                                {messageTitle}</h3>
+                        </div>
+                        <div class="slds-size--1-of-1 slds-align--absolute-center slds-p-top--small">
+                            <p class="slds-text-body_regular slds-text-align--center">{messageBody}</p>
+                        </div>
+                    </div>
+                </template>
+                <template if:true={isInline}>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-size--1-of-1">
+                            <div class={inlineMessageClass}>
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-size--1-of-1">
+                                        <div class="slds-grid">
+                                            <template if:true={showIcon}>
+                                                <div class="slds-size--3-of-12 slds-small-size--3-of-12 slds-medium-size--2-of-12 slds-large-size--1-of-12 slds-align--absolute-center">
+                                                    <lightning-icon
+                                                            class="slds-icon slds-icon--small slds-m-right--small slds-col slds-no-flex slds-align--absolute-center"
+                                                            icon-name={iconName} variant={iconVariant}
+                                                            size={iconSize}
+                                                            alternative-text={iconAlternativeText}></lightning-icon>
+                                                </div>
+                                                <div class="slds-size--9-of-12 slds-small-size--9-of-12 slds-medium-size--10-of-12 slds-size--11-of-12 slds-align-middle">
+                                                    <p class="slds-wrap" style="font-size:.9rem;font-weight:bold">
+                                                        {messageTitle}</p>
+                                                    <p class="slds-wrap" style="font-size:.9rem;">{messageBody}</p>
+                                                </div>
+                                            </template>
+                                            <template if:false={showIcon}>
+                                                <div class="slds-size--1-of-1 slds-align-middle">
+                                                    <p class="slds-wrap" style="font-size:.9rem;font-weight:bold">
+                                                        {messageTitle}</p>
+                                                    <p class="slds-wrap" style="font-size:.9rem;">{messageBody}</p>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+        <template if:true={isPrompt}>
+            <section role="alertdialog" tabindex="0" aria-labelledby="prompt-heading-id"
+                     aria-describedby="prompt-message-wrapper"
+                     class="slds-modal slds-fade-in-open slds-modal_prompt" aria-modal="true">
+                <div class="slds-modal__container">
+                    <header class={promptMessageClass}>
+                        <template if:true={allowClose}>
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                    title="Close" onclick={closeMessage}>
+                                <lightning-icon icon-name="utility:close"
+                                                alternative-text="close"
+                                                variant="inverse"
+                                                size="x-small"></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                        </template>
+                        <h2 class="slds-text-heading_medium slds-text-align--center" id="prompt-heading-id">
+                            {messageTitle}</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="prompt-message-wrapper">
+                        <p>{messageBody}</p>
+                    </div>
+                    <footer class="slds-modal__footer slds-theme_default">
+                        <template if:true={allowClose}>
+                            <button class="slds-button slds-button_neutral" onclick={closeMessage}>
+                                {buttonLabel}
+                            </button>
+                        </template>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </template>
+</template>
