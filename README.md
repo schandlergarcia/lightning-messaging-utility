@@ -4,6 +4,8 @@ Whether you're a Salesforce Admin or Developer - the way you deliver messages to
 
 Lightning Messaging Utility gives you the ability to drag and drop messaging components into the lighting app builder as well as using them programmatically to speed up development!
 
+[Video Overview](https://www.youtube.com/watch?v=QzOL1B2b-H0)
+
 ## Lightning Design System Messaging Guidelines
 
 Always reference the Lightning Design System Messaging Guidelines when using this component: https://www.lightningdesignsystem.com/guidelines/messaging/overview/#site-main-content
